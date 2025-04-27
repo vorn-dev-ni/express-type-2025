@@ -9,11 +9,13 @@ const middleware_1 = require("./middleware");
 const routes_1 = __importDefault(require("./routes"));
 const helmet_1 = __importDefault(require("helmet"));
 const express_rate_limit_1 = require("express-rate-limit");
+const compression_1 = __importDefault(require("compression"));
 const createAppServer = () => {
     const app = (0, express_1.default)();
     app.use((0, helmet_1.default)({
         contentSecurityPolicy: false,
     }));
+    app.use((0, compression_1.default)());
     app.use(express_1.default.json());
     const globalRateLimit = (0, express_rate_limit_1.rateLimit)({
         windowMs: 15 * 60 * 1000, // 15 minutes

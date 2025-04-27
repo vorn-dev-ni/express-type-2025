@@ -9,7 +9,7 @@ import {
 import mainRoute from "./routes";
 import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
-
+import compression from "compression";
 const createAppServer = () => {
   const app = express();
   app.use(
@@ -17,6 +17,7 @@ const createAppServer = () => {
       contentSecurityPolicy: false,
     })
   );
+  app.use(compression());
   app.use(express.json());
   const globalRateLimit = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
