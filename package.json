@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
+   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc --build && node dist/index.js ",
-    "dev": "tsx --watch index.ts",
-    "build": "tsc --build",
-    "start:dev": "nodemon --watch '**/*.ts' --exec ts-node index.ts",
+    "start": "export NODE_ENV=production && tsc --build && node dist/index.js ",
+    "dev": "export NODE_ENV=development && tsx --watch index.ts",
+    "start:dev": "export NODE_ENV=development && nodemon --watch '**/*.ts' --exec 'ts-node' index.ts",
     "shutdown": "tsc --build && node dist/src/utils/script/shutdown.js",
     "db:create": "sequelize db:create",
     "db:migrate": "sequelize db:migrate",
