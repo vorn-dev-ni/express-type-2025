@@ -1,4 +1,8 @@
-import express, { json, Request, Response } from "express";
+import compression from "compression";
+import session from "express-session";
+import express, { Request, Response } from "express";
+import { rateLimit } from "express-rate-limit";
+import helmet from "helmet";
 import morgan from "morgan";
 import {
   catchAllErrorMiddleware,
@@ -7,11 +11,17 @@ import {
   notFoundMiddleWare,
 } from "./middleware";
 import mainRoute from "./routes";
-import helmet from "helmet";
-import { rateLimit } from "express-rate-limit";
-import compression from "compression";
 const createAppServer = () => {
   const app = express();
+  app.use(
+    session({
+      saveUninitialized: false,
+      resave: false,
+      secret: "P@ss@123",
+      proxy: process.env.NODE_ENV == "production" ? true : false,
+      cookie: { secure: process.env.NODE_ENV == "production" ? true : false },
+    })
+  );
   app.use(
     helmet({
       contentSecurityPolicy: false,
@@ -31,7 +41,6 @@ const createAppServer = () => {
   app.use(loggerMiddleware, corsMiddleware, morgan("dev"));
   app.use(globalRateLimit);
   app.get("/", (req: Request, res: Response) => {
-    console.log("Server is runnin");
     return res.redirect("https://expressjs.com/");
   });
   app.use("/api/v1/", mainRoute);
