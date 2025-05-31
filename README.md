@@ -1,4 +1,4 @@
-# Express.js + TypeScript + MySQL (Sequelize) Starter
+# Express.js + TypeScript Starter
 
 A modern boilerplate for building scalable server-side applications using:
 
