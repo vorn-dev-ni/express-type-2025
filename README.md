@@ -4,7 +4,7 @@ A modern boilerplate for building scalable server-side applications using:
 
 - **Express.js** (web server)
 - **TypeScript** (strict types)
-- **Sequelize ORM** (with MySQL)
+- **Type ORM** (with MySQL)
 - **dotenv** (for environment variables)
 - **Docker** (optional containerization)
 
@@ -14,8 +14,6 @@ A modern boilerplate for building scalable server-side applications using:
 - Node.js 20+
 - Express.js
 - TypeScript
-- MySQL
-- Sequelize ORM
 - Docker (optional)
 
 ---

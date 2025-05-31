@@ -1,22 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
     "rootDir": "./",
-    "outDir": "./dist",
+    "outDir": "./build",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "skipLibCheck": true,
+    "target": "es2021",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "types": ["sequelize-typescript"],
-    "allowJs": true,
+    "sourceMap": false,
+    "resolveJsonModule": true,
+    "strict": true
   },
   "include": ["**/*.ts",".sequelizerc"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["build", "node_modules"]
 }
 
